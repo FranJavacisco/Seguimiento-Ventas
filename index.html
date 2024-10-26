@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Ventas</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Control de Ventas</h1>
+        <label for="saleAmount">Monto de Venta</label>
+        <input type="text" id="saleAmount" oninput="formatNumber(this)" required>
+        
+        <label for="warrantyAmount">Monto de Garantía</label>
+        <input type="text" id="warrantyAmount" oninput="formatNumber(this)" required>
+        
+        <label for="insuranceAmount">Monto de Seguro</label>
+        <input type="text" id="insuranceAmount" oninput="formatNumber(this)" required>
+
+        <label for="productDescription">Descripción del Producto</label>
+        <input type="text" id="productDescription" required>
+
+        <button class="btn" onclick="saveSale()">Guardar Venta</button>
+        <button class="btn" onclick="downloadReport()">Descargar Reporte</button>
+
+        <div class="output">
+            <h3>Indicadores</h3>
+            <p>Cruce: <span id="crucePercent">0%</span></p>
+            <p>Monto Venta sin IVA: <span id="ventaSinIVA">0</span></p>
+            <p>Garantía sin IVA: <span id="garantiaSinIVA">0</span></p>
+            <p>Seguro sin IVA: <span id="seguroSinIVA">0</span></p>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+
