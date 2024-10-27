@@ -1,5 +1,7 @@
 # Control de Ventas Diario - Ripley
 
+https://franjavacisco.github.io/Seguimiento-Ventas/
+
 Esta aplicación de escritorio permite a los trabajadores de Ripley registrar y controlar sus ventas diarias. Ofrece una interfaz intuitiva y responsiva que facilita el ingreso y visualización de datos, así como la descarga de reportes para llevar un registro personal.
 
 ## Características
