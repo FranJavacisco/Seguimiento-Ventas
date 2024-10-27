@@ -107,5 +107,35 @@ function downloadReport() {
 
 initDB();
 
+async function guardarVenta(montoVenta, montoGarantia, montoSeguro, descripcion) {
+    try {
+      const fecha = new Date();
+      await db.collection("ventas").add({
+        montoVenta,
+        montoGarantia,
+        montoSeguro,
+        descripcion,
+        fecha: firebase.firestore.Timestamp.fromDate(fecha),
+      });
+      console.log("Venta guardada exitosamente");
+    } catch (error) {
+      console.error("Error al guardar la venta: ", error);
+    }
+  }
+
+  async function obtenerVentas() {
+    try {
+      const snapshot = await db.collection("ventas").orderBy("fecha", "desc").get();
+      snapshot.forEach((doc) => {
+        const venta = doc.data();
+        console.log("Venta registrada:", venta);
+        // Lógica para mostrar cada venta en el reporte
+      });
+    } catch (error) {
+      console.error("Error al obtener las ventas: ", error);
+    }
+  }
+  
+
 
 

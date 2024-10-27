@@ -106,4 +106,71 @@ function downloadReport() {
 }
 
 initDB();
+
+function guardarVenta(montoVenta, montoGarantia, montoSeguro, descripcion) {
+  var fecha;
+  return regeneratorRuntime.async(function guardarVenta$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.prev = 0;
+          fecha = new Date();
+          _context.next = 4;
+          return regeneratorRuntime.awrap(db.collection("ventas").add({
+            montoVenta: montoVenta,
+            montoGarantia: montoGarantia,
+            montoSeguro: montoSeguro,
+            descripcion: descripcion,
+            fecha: firebase.firestore.Timestamp.fromDate(fecha)
+          }));
+
+        case 4:
+          console.log("Venta guardada exitosamente");
+          _context.next = 10;
+          break;
+
+        case 7:
+          _context.prev = 7;
+          _context.t0 = _context["catch"](0);
+          console.error("Error al guardar la venta: ", _context.t0);
+
+        case 10:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, null, null, [[0, 7]]);
+}
+
+function obtenerVentas() {
+  var snapshot;
+  return regeneratorRuntime.async(function obtenerVentas$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          _context2.prev = 0;
+          _context2.next = 3;
+          return regeneratorRuntime.awrap(db.collection("ventas").orderBy("fecha", "desc").get());
+
+        case 3:
+          snapshot = _context2.sent;
+          snapshot.forEach(function (doc) {
+            var venta = doc.data();
+            console.log("Venta registrada:", venta); // Lógica para mostrar cada venta en el reporte
+          });
+          _context2.next = 10;
+          break;
+
+        case 7:
+          _context2.prev = 7;
+          _context2.t0 = _context2["catch"](0);
+          console.error("Error al obtener las ventas: ", _context2.t0);
+
+        case 10:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  }, null, null, [[0, 7]]);
+}
 //# sourceMappingURL=app.dev.js.map
